@@ -1,5 +1,8 @@
 #!/bin/sh
 
-./tools/get_model.py
+#./tools/get_model.py
 
-./tools/push2SDCard.sh
+adb push phone_data/fastrcnn /sdcard/
+
+
+adb push phone_data/vision_scene /sdcard/
