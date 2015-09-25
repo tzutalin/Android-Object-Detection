@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SceneRecognitionActivity extends Activity {
-    private final static String TAG = "dada SceneRecognitionActivity";
+    private final static String TAG = "SceneRecognitionActivity";
     // UI
     MaterialListView mListView;
     private SceneClassifier mClassifier;

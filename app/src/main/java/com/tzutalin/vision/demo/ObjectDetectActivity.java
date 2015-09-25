@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectDetectActivity extends Activity {
-    private final static String TAG = "dada ObjectDetectActivity";
+    private final static String TAG = "ObjectDetectActivity";
     private ObjectDetector mObjectDet;
     // UI
     MaterialListView mListView;

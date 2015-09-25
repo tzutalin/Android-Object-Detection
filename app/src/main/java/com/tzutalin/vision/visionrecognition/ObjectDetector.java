@@ -31,7 +31,7 @@ import java.util.List;
  * {@link android.graphics.Bitmap} graphic object.
  */
 public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
-    private static final String TAG = "dada ObjectDetector";
+    private static final String TAG = "ObjectDetector";
     private ByteBuffer _handler = null;
 
     /**
