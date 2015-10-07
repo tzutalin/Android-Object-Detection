@@ -26,6 +26,10 @@
 
 ![](demo/3.png)
 
+![](demo/4.png)
+
+![](demo/5.png)
+
 ## Usage 
 
 * There should be model and weight in /sdcard/fastrcnn and /sdcard/vision_scene after $ ./setup.sh
