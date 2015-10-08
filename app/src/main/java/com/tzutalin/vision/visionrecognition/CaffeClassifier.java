@@ -41,6 +41,7 @@ public abstract class CaffeClassifier<T> {
             System.loadLibrary("objrek_jni");
             jniNativeClassInit();
             sInitialized = true;
+            android.util.Log.d("CaffeClassifier", "jniNativeClassInit success");
         } catch (UnsatisfiedLinkError e) {
             android.util.Log.d("CaffeClassifier", "objrek objrek_jni library not found!");
         }

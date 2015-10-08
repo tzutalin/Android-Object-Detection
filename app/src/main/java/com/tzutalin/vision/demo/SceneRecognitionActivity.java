@@ -56,6 +56,12 @@ public class SceneRecognitionActivity extends Activity {
         mListView = (MaterialListView) findViewById(R.id.material_listview);
         final String key = Camera2BasicFragment.KEY_IMGPATH;
         String imgPath = getIntent().getExtras().getString(key);
+        if (new File(imgPath).exists() == false) {
+            Toast.makeText(this, "No file path", Toast.LENGTH_SHORT).show();
+            this.finish();
+            return;
+        }
+
         PredictTask task = new PredictTask();
         task.execute(imgPath);
 
@@ -180,11 +186,15 @@ public class SceneRecognitionActivity extends Activity {
     // ==========================================================
     private void initCaffeMobile() {
         if (mClassifier == null) {
-            mClassifier = VisionClassifierCreator.createSceneClassifier(getApplicationContext());
-            Log.d(TAG, "Start Load model");
-            // TODO : Fix it
-            mClassifier.init(224,224);  // init once
-            Log.d(TAG, "End Load model");
+            try {
+                mClassifier = VisionClassifierCreator.createSceneClassifier(getApplicationContext());
+                Log.d(TAG, "Start Load model");
+                // TODO : Fix it
+                mClassifier.init(224,224);  // init once
+                Log.d(TAG, "End Load model");
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

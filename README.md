@@ -3,7 +3,7 @@
 ## Requirements
 * Android 4.0+ support
 
-* ARMv7 based devices
+* ARMv7 and x86_64 based devices
 
 * Get the Caffe model and push it to Phone SDCard
 

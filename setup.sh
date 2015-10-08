@@ -1,8 +1,12 @@
 #!/bin/sh
 
-#./tools/get_model.py
+if [ -d phone_data/ ]
+then
+    echo "model exists"
+else
+    ./tools/get_model.py
+fi
 
-adb push phone_data/fastrcnn /sdcard/
+adb push phone_data/ /sdcard/
+rm phone_data.tar
 
-
-adb push phone_data/vision_scene /sdcard/

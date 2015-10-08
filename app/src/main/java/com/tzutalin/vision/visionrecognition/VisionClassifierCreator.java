@@ -38,25 +38,15 @@ public class VisionClassifierCreator {
      * Create an instance using a default {@link SceneClassifier} instance
      * @return {@link SceneClassifier instance
      */
-    public static SceneClassifier createSceneClassifier(Context context) {
-        try {
-            return new SceneClassifier(context, SCENE_MODEL_PATH, SCENE_WIEGHTS_PATH, SCENE_MEAN_FILE, SCENE_SYNSET_FILE);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static SceneClassifier createSceneClassifier(Context context) throws IllegalAccessException {
+        return new SceneClassifier(context, SCENE_MODEL_PATH, SCENE_WIEGHTS_PATH, SCENE_MEAN_FILE, SCENE_SYNSET_FILE);
     }
 
     /**
      * Create an instance using a default {@link ObjectDetector} instance
      * @return {@link ObjectDetector} instance
      */
-    public static ObjectDetector createObjectDetector(Context context) {
-        try {
-            return new ObjectDetector(context, DETECT_MODEL_PATH, DETECT_WIEGHTS_PATH, DETECT_MEAN_FILE, DETECT_SYNSET_FILE);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static ObjectDetector createObjectDetector(Context context) throws IllegalAccessException {
+        return new ObjectDetector(context, DETECT_MODEL_PATH, DETECT_WIEGHTS_PATH, DETECT_MEAN_FILE, DETECT_SYNSET_FILE);
     }
 }

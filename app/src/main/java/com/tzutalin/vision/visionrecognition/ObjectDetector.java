@@ -73,6 +73,7 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
      */
     @Override
     public List<VisionDetRet> classifyByPath(String imgPath) {
+        // TODO : If file path didn't exist
         List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
 
        /* BitmapFactory.Options options = new BitmapFactory.Options();

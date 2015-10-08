@@ -55,7 +55,11 @@ public class ObjectDetectActivity extends Activity {
         mListView = (MaterialListView) findViewById(R.id.material_listview);
         final String key = Camera2BasicFragment.KEY_IMGPATH;
         String imgPath = getIntent().getExtras().getString(key);
-
+        if (new File(imgPath).exists() == false) {
+            Toast.makeText(this, "No file path", Toast.LENGTH_SHORT).show();
+            this.finish();
+            return;
+        }
         DetectTask task = new DetectTask();
         task.execute(imgPath);
     }
@@ -96,9 +100,13 @@ public class ObjectDetectActivity extends Activity {
             long endTime = 0;
             Log.d(TAG, "DetectTask filePath:" + filePath);
             if (mObjectDet == null) {
-                mObjectDet = VisionClassifierCreator.createObjectDetector(getApplicationContext());
-                // TODO: Get Image's height and width
-                mObjectDet.init(0, 0);
+                try {
+                    mObjectDet = VisionClassifierCreator.createObjectDetector(getApplicationContext());
+                    // TODO: Get Image's height and width
+                    mObjectDet.init(0, 0);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
             List<VisionDetRet> ret = new ArrayList<>();
             if (mObjectDet != null) {
