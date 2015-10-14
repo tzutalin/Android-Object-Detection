@@ -24,6 +24,7 @@ android {
         compile "com.android.support:cardview-v7:23.0.0"
         compile 'com.android.support:appcompat-v7:23.0.0'
         compile 'com.github.dexafree:materiallist:3.0.1'
+        compile project(':cnnlibs')
     }
 }
 
