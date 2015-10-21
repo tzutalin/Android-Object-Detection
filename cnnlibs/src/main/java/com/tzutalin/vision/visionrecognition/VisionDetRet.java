@@ -90,4 +90,20 @@ public final class VisionDetRet {
     public String getLabel() {
         return mLabel;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Left:");
+        sb.append(mLabel);
+        sb.append(", Top:");
+        sb.append(mTop);
+        sb.append(", Right:");
+        sb.append(mRight);
+        sb.append(", Bottom:");
+        sb.append(mBottom);
+        sb.append(", Label:");
+        sb.append(mLabel);
+        return sb.toString();
+    }
 }

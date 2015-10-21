@@ -17,6 +17,7 @@
 package com.tzutalin.vision.visionrecognition;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import java.io.File;
 
@@ -38,7 +39,8 @@ public class VisionClassifierCreator {
      * Create an instance using a default {@link SceneClassifier} instance
      * @return {@link SceneClassifier instance
      */
-    public static SceneClassifier createSceneClassifier(Context context) throws IllegalAccessException {
+    @NonNull
+    public static SceneClassifier createSceneClassifier(@NonNull Context context) throws IllegalAccessException {
         return new SceneClassifier(context, SCENE_MODEL_PATH, SCENE_WIEGHTS_PATH, SCENE_MEAN_FILE, SCENE_SYNSET_FILE);
     }
 
@@ -46,7 +48,8 @@ public class VisionClassifierCreator {
      * Create an instance using a default {@link ObjectDetector} instance
      * @return {@link ObjectDetector} instance
      */
-    public static ObjectDetector createObjectDetector(Context context) throws IllegalAccessException {
+    @NonNull
+    public static ObjectDetector createObjectDetector(@NonNull Context context) throws IllegalAccessException {
         return new ObjectDetector(context, DETECT_MODEL_PATH, DETECT_WIEGHTS_PATH, DETECT_MEAN_FILE, DETECT_SYNSET_FILE);
     }
 }

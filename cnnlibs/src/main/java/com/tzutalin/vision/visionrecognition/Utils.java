@@ -15,6 +15,8 @@
 */
 package com.tzutalin.vision.visionrecognition;
 
+import android.support.annotation.NonNull;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -28,8 +30,8 @@ import java.util.TreeMap;
  * Created by darrenl on 2015/9/10.
  */
 public class Utils {
-
-    public static Map<String, Float> sortPrediction(String[] synsets, float[] propArray) {
+    @NonNull
+    public static Map<String, Float> sortPrediction(@NonNull String[] synsets, @NonNull float[] propArray) {
         HashMap<String, Float> map = new HashMap<>();
         if (propArray != null) {
             for (int i = 0; i != synsets.length; i++) {
