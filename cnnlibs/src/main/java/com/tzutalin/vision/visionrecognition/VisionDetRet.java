@@ -95,7 +95,7 @@ public final class VisionDetRet {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Left:");
-        sb.append(mLabel);
+        sb.append(mLeft);
         sb.append(", Top:");
         sb.append(mTop);
         sb.append(", Right:");
