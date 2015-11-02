@@ -27,16 +27,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.dexafree.materialList.card.Card;
+import com.dexafree.materialList.card.provider.BigImageCardProvider;
+import com.dexafree.materialList.view.MaterialListView;
 import com.tzutalin.vision.visionrecognition.ObjectDetector;
 import com.tzutalin.vision.visionrecognition.R;
 import com.tzutalin.vision.visionrecognition.VisionClassifierCreator;
 import com.tzutalin.vision.visionrecognition.VisionDetRet;
-import com.dexafree.materialList.card.Card;
-import com.dexafree.materialList.card.provider.BigImageCardProvider;
-import com.dexafree.materialList.view.MaterialListView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -104,6 +103,7 @@ public class ObjectDetectActivity extends Activity {
                     mObjectDet = VisionClassifierCreator.createObjectDetector(getApplicationContext());
                     // TODO: Get Image's height and width
                     mObjectDet.init(0, 0);
+                    //mObjectDet.setSelectedLabel("person");
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }

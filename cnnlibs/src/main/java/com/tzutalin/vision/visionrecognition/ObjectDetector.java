@@ -19,6 +19,7 @@ package com.tzutalin.vision.visionrecognition;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.File;
@@ -48,7 +49,7 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
         if (new File(mModelPath).exists() == false ||
                 new File(mWeightsPath).exists() == false ||
                 new File(mSynsetPath).exists() == false ) {
-            throw new IllegalAccessException(" Cannot find model");
+            throw new IllegalAccessException("ObjectDetector cannot find model");
         }
     }
 
@@ -63,6 +64,19 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
         super.deInit();
         jniRelease();
     }
+
+    @Override
+    public void setSelectedLabel(String label) {
+        super.setSelectedLabel(label);
+        jniSetSelectedLabel(label);
+    }
+
+    @Override
+    public void clearSelectedLabel() {
+        super.clearSelectedLabel();
+        jniSetSelectedLabel("");
+    }
+
     /**
      * Detect and locate objects according to the given image path
      * @param imgPath image path
@@ -73,13 +87,13 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
      */
     @Override
     public List<VisionDetRet> classifyByPath(String imgPath) {
-        // TODO : If file path didn't exist
         List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
 
-       /* BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize = 1;
-        Bitmap bitmap = BitmapFactory.decodeFile(imgPath, options);
-        return classify(bitmap);*/
+        if (TextUtils.isEmpty(imgPath) || new File(imgPath).exists() == false) {
+            Log.e(TAG, "classifyByPath. Invalid Input path");
+            return ret;
+        }
+
         int numObjs = jniClassifyImgByPath(imgPath);
         for (int i = 0; i != numObjs; i++) {
             VisionDetRet det = new VisionDetRet();
@@ -106,15 +120,23 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
                     "bitmap size doesn't match initialization");
         }*/
         List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
+
+        // Check input
+        if (bitmap == null) {
+            Log.e(TAG, "classify. Invalid Input bitmap");
+            return ret;
+        }
+
         storeBitmap(bitmap);
+
         int numObjs = jniClassifyBitmap(_handler);
         for (int i = 0; i != numObjs; i++) {
             VisionDetRet det = new VisionDetRet();
             int success = jniGetDetRet(det, i);
-            android.util.Log.d(TAG , det.getLabel());
             if (success >= 0)
                 ret.add(det);
         }
+
         freeBitmap();
         return ret;
     }
@@ -135,6 +157,8 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
     protected native int jniLoadModel(String modelPath, String weightsPath, String meanfilePath, String sysetPath);
 
     protected native int jniRelease();
+
+    protected native int jniSetSelectedLabel(String label);
 
     protected native int jniClassifyImgByPath(String imgPath);
 

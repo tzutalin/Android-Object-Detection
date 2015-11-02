@@ -18,6 +18,8 @@ package com.tzutalin.vision.visionrecognition;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,6 +34,7 @@ import java.util.Map;
  * {@link android.graphics.Bitmap} graphic object.
  */
 public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
+    private static final String TAG = "SceneClassifier";
     private static final int MODEL_DIM = 224;
     private ByteBuffer _handler = null;
 
@@ -50,7 +53,7 @@ public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
         if (new File(mModelPath).exists() == false ||
                 new File(mWeightsPath).exists() == false ||
                 new File(mSynsetPath).exists() == false ) {
-            throw new IllegalAccessException(" Cannot find model");
+            throw new IllegalAccessException("SceneClassifier cannot find model");
         }
     }
 
@@ -65,9 +68,14 @@ public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
      */
     @Override
     public List<VisionDetRet> classifyByPath(String imgPath) {
-        float[] propArray = jniClassifyImgByPath(imgPath);
         List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
 
+        if (TextUtils.isEmpty(imgPath) || new File(imgPath).exists() == false) {
+            Log.e(TAG, "classifyByPath. Invalid Input path");
+            return ret;
+        }
+
+        float[] propArray = jniClassifyImgByPath(imgPath);
         if (propArray != null) {
             Map<String, Float> sortedmap = Utils.sortPrediction(mSynsets, propArray);
             int k_size = 10;
@@ -78,6 +86,7 @@ public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
                     break;
             }
         }
+
         return ret;
     }
 
@@ -92,9 +101,16 @@ public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
      */
     @Override
     public List<VisionDetRet> classify(Bitmap bitmap) {
+        List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
+
+        // Check input
+        if (bitmap == null) {
+            Log.e(TAG, "classify. Invalid Input bitmap");
+            return ret;
+        }
+
         storeBitmap(bitmap);
 
-        List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
         float[] propArray = jniClassifyBitmap(_handler);
         if (propArray != null) {
             Map<String, Float> sortedmap = Utils.sortPrediction(mSynsets, propArray);

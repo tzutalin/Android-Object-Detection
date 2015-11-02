@@ -55,6 +55,7 @@ public abstract class CaffeClassifier<T> {
     protected String[] mSynsets;
     protected int mImgWidth;
     protected int mImgHeight;
+    private String mSelectedLabel;
 
     /**
      *
@@ -101,6 +102,15 @@ public abstract class CaffeClassifier<T> {
      * Release the resource, model, weight, deallocate the buffer
      */
     public void deInit() {
+    }
+
+
+    public void setSelectedLabel(String label) {
+        mSelectedLabel = label;
+    }
+
+    public void clearSelectedLabel() {
+        mSelectedLabel = null;
     }
 
     private String[] getSynsetsFromFile(Context context) {
