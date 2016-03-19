@@ -14,7 +14,6 @@ else:
 
 def download_file(url, desc=None, renamed_file=None):
     u = urllib2.urlopen(url)
-
     scheme, netloc, path, query, fragment = urlparse.urlsplit(url)
     filename = os.path.basename(path)
     if not filename:
@@ -58,7 +57,7 @@ def extractTarfile(filename):
     tar.close()
 
 if __name__== '__main__':
-    download_url = 'https://copy.com/WKs8KydCcQYjwBdo/phone_data.tar?download=1'
+    download_url = 'https://www.dropbox.com/s/0i2fr9krb8wv8mp/phone_data.tar?dl=1'
     target_name = 'phone_data.tar'
     download_file(download_url, renamed_file=target_name)
     extractTarfile(target_name)
