@@ -46,9 +46,9 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
      */
     public ObjectDetector(Context context, String modelPath, String wieghtsPath, String manefile, String synsetFile) throws IllegalAccessException {
         super(context, modelPath, wieghtsPath, manefile, synsetFile);
-        if (new File(mModelPath).exists() == false ||
-                new File(mWeightsPath).exists() == false ||
-                new File(mSynsetPath).exists() == false ) {
+        if (!new File(mModelPath).exists() ||
+                !new File(mWeightsPath).exists() ||
+                !new File(mSynsetPath).exists() ) {
             throw new IllegalAccessException("ObjectDetector cannot find model");
         }
     }
@@ -89,7 +89,7 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
     public List<VisionDetRet> classifyByPath(String imgPath) {
         List<VisionDetRet> ret = new ArrayList<VisionDetRet>();
 
-        if (TextUtils.isEmpty(imgPath) || new File(imgPath).exists() == false) {
+        if (TextUtils.isEmpty(imgPath) || !new File(imgPath).exists()) {
             Log.e(TAG, "classifyByPath. Invalid Input path");
             return ret;
         }
