@@ -54,7 +54,7 @@ public class ObjectDetectActivity extends Activity {
         mListView = (MaterialListView) findViewById(R.id.material_listview);
         final String key = Camera2BasicFragment.KEY_IMGPATH;
         String imgPath = getIntent().getExtras().getString(key);
-        if (new File(imgPath).exists() == false) {
+        if (!new File(imgPath).exists()) {
             Toast.makeText(this, "No file path", Toast.LENGTH_SHORT).show();
             this.finish();
             return;
