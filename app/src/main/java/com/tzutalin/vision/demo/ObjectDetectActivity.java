@@ -95,8 +95,8 @@ public class ObjectDetectActivity extends Activity {
         @Override
         protected List<VisionDetRet> doInBackground(String... strings) {
             final String filePath = strings[0];
-            long startTime = 0;
-            long endTime = 0;
+            long startTime;
+            long endTime;
             Log.d(TAG, "DetectTask filePath:" + filePath);
             if (mObjectDet == null) {
                 try {

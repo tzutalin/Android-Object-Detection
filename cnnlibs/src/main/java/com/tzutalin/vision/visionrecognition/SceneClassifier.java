@@ -78,11 +78,11 @@ public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
         float[] propArray = jniClassifyImgByPath(imgPath);
         if (propArray != null) {
             Map<String, Float> sortedmap = Utils.sortPrediction(mSynsets, propArray);
-            int k_size = 10;
+            int kSize = 10;
             for (String key : sortedmap.keySet()) {
                 VisionDetRet det = new VisionDetRet(key, sortedmap.get(key), 0, 0, 0, 0);
                 ret.add(det);
-                if (k_size == ret.size())
+                if (kSize == ret.size())
                     break;
             }
         }
@@ -114,11 +114,11 @@ public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
         float[] propArray = jniClassifyBitmap(_handler);
         if (propArray != null) {
             Map<String, Float> sortedmap = Utils.sortPrediction(mSynsets, propArray);
-            int k_size = 10;
+            int kSize = 10;
             for (String key : sortedmap.keySet()) {
                 VisionDetRet det = new VisionDetRet(key, sortedmap.get(key), 0, 0, 0, 0);
                 ret.add(det);
-                if (k_size == ret.size())
+                if (kSize == ret.size())
                     break;
             }
         }

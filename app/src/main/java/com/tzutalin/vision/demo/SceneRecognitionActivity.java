@@ -124,8 +124,8 @@ public class SceneRecognitionActivity extends Activity {
         @Override
         protected List<VisionDetRet> doInBackground(String... strings) {
             initCaffeMobile();
-            long startTime = 0;
-            long endTime = 0;
+            long startTime;
+            long endTime;
             final String filePath = strings[0];
             List<VisionDetRet> rets = new ArrayList<>();
             Log.d(TAG, "PredictTask filePath:" + filePath);
