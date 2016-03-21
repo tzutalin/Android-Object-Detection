@@ -36,7 +36,7 @@ import java.util.Map;
 public class SceneClassifier extends CaffeClassifier<List<VisionDetRet>> {
     private static final String TAG = "SceneClassifier";
     private static final int MODEL_DIM = 224;
-    private ByteBuffer _handler = null;
+    private ByteBuffer _handler;
 
     /**
      * Creates a SceneClassifier, configured with its model path, trained weights, etc.
