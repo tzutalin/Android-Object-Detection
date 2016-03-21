@@ -155,13 +155,14 @@ public class ObjectDetectActivity extends Activity {
             mListView.add(card);
             for (VisionDetRet item : rets) {
                 StringBuilder sb = new StringBuilder();
-                sb.append(item.getLabel() + ", Prob:" + item.getConfidence() + " ")
-                        .append("[")
-                        .append("" + item.getLeft() + ",")
-                        .append("" + item.getTop() + ",")
-                        .append("" + item.getRight() + ",")
-                        .append("" + item.getBottom())
-                        .append("]");
+                sb.append(item.getLabel())
+                        .append(", Prob:").append(item.getConfidence())
+                        .append(" [")
+                        .append(item.getLeft()).append(',')
+                        .append(item.getTop()).append(',')
+                        .append(item.getRight()).append(',')
+                        .append(item.getBottom())
+                        .append(']');
                 Log.d(TAG, sb.toString());
 
                 if (!item.getLabel().equalsIgnoreCase("background")) {
