@@ -93,17 +93,16 @@ public final class VisionDetRet {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Left:");
-        sb.append(mLeft);
-        sb.append(", Top:");
-        sb.append(mTop);
-        sb.append(", Right:");
-        sb.append(mRight);
-        sb.append(", Bottom:");
-        sb.append(mBottom);
-        sb.append(", Label:");
-        sb.append(mLabel);
-        return sb.toString();
+        return new StringBuilder()
+                .append("Left:")
+                .append(mLeft)
+                .append(", Top:")
+                .append(mTop)
+                .append(", Right:")
+                .append(mRight)
+                .append(", Bottom:")
+                .append(mBottom)
+                .append(", Label:")
+                .append(mLabel).toString();
     }
 }
