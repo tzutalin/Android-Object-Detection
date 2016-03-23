@@ -120,7 +120,7 @@ public abstract class CaffeClassifier<T> {
             try {
                 br = new BufferedReader(new FileReader(file));
                 String line;
-                List<String> lines = new ArrayList<String>();
+                List<String> lines = new ArrayList<>();
                 while ((line = br.readLine()) != null) {
                     String temp = line.substring(line.lastIndexOf("/") + 1);
                     lines.add(temp.split(" ")[0]);
