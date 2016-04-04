@@ -115,10 +115,6 @@ public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
      */
     @Override
     public List<VisionDetRet> classify(Bitmap bitmap) {
-        /*if (bitmap.getWidth() != mImgWidth || bitmap.getHeight() != mImgHeight) {
-            throw new IllegalArgumentException(
-                    "bitmap size doesn't match initialization");
-        }*/
         List<VisionDetRet> ret = new ArrayList<>();
 
         // Check input

@@ -136,7 +136,7 @@ public class SceneRecognitionActivity extends Activity {
                 Log.d(TAG, "format:" + options.inPreferredConfig);
                 Bitmap bitmapImg = BitmapFactory.decodeFile(filePath, options);
                 startTime = System.currentTimeMillis();
-                rets.addAll(mClassifier.classify(bitmapImg));//mClassifier.classifyByPath(filePath);
+                rets.addAll(mClassifier.classify(bitmapImg));
 
                 endTime = System.currentTimeMillis();
                 final double diffTime = (double) (endTime - startTime) / 1000;
