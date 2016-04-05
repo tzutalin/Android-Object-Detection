@@ -29,7 +29,12 @@ import java.util.TreeMap;
 /**
  * Created by darrenl on 2015/9/10.
  */
-public class Utils {
+public final class Utils {
+
+    private Utils() throws InstantiationException {
+        throw new InstantiationException("This class is not for initialization");
+    }
+
     @NonNull
     public static Map<String, Float> sortPrediction(@NonNull String[] synsets, @NonNull float[] propArray) {
         HashMap<String, Float> map = new HashMap<>();

@@ -24,7 +24,7 @@ import java.io.File;
 /**
  * Create an instance using default instances for vision recognition and detection
  */
-public class VisionClassifierCreator {
+public final class VisionClassifierCreator {
     private final static String SCENE_MODEL_PATH = "/sdcard/vision_scene/mit/deploy_places205_mem.protxt";
     private final static String SCENE_WIEGHTS_PATH = "/sdcard/vision_scene/mit/googlelet_places205_train_iter_2400000.caffemodel";
     private final static String SCENE_MEAN_FILE = null;
@@ -34,6 +34,10 @@ public class VisionClassifierCreator {
     private final static String DETECT_WIEGHTS_PATH = "/sdcard/fastrcnn/caffenet_fast_rcnn_iter_40000.caffemodel";
     private final static String DETECT_MEAN_FILE = "/sdcard/fastrcnn/imagenet_mean.binaryproto";
     private final static String DETECT_SYNSET_FILE = "/sdcard/fastrcnn/fastrcnn_synset";
+
+    private VisionClassifierCreator() throws InstantiationException {
+        throw new InstantiationException("This class is not for instantiation");
+    }
 
     /**
      * Create an instance using a default {@link SceneClassifier} instance
