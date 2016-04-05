@@ -103,7 +103,6 @@ public class ObjectDetectActivity extends Activity {
                     mObjectDet = VisionClassifierCreator.createObjectDetector(getApplicationContext());
                     // TODO: Get Image's height and width
                     mObjectDet.init(0, 0);
-                    //mObjectDet.setSelectedLabel("person");
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
