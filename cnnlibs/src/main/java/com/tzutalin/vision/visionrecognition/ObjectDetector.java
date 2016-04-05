@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class ObjectDetector extends CaffeClassifier <List<VisionDetRet>>{
     private static final String TAG = "ObjectDetector";
-    private ByteBuffer _handler = null;
+    private ByteBuffer _handler;
 
     /**
      * Creates a ObjectDetector, configured with its model path, trained weights, etc.

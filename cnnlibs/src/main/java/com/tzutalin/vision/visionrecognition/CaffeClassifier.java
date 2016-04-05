@@ -34,7 +34,7 @@ import java.util.List;
  * @param <T>
  */
 public abstract class CaffeClassifier<T> {
-    protected static boolean sInitialized = false;
+    protected static boolean sInitialized;
     static {
         try {
             System.loadLibrary("objrek");

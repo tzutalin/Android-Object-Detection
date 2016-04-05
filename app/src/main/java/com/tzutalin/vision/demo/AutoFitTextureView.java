@@ -12,8 +12,8 @@ import android.view.TextureView;
  */
 public class AutoFitTextureView extends TextureView {
 
-    private int mRatioWidth = 0;
-    private int mRatioHeight = 0;
+    private int mRatioWidth;
+    private int mRatioHeight;
 
     public AutoFitTextureView(Context context) {
         this(context, null);
