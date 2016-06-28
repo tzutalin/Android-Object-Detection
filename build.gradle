@@ -16,3 +16,15 @@ allprojects {
         jcenter()
     }
 }
+
+ext {
+    groupName = 'com.github.tzutalin'
+    artifactName = 'Android-Object-Detection'
+    artifactDescription = 'Fast-RCNN and Scene Recognition using Caffe'
+    artifactLabels = ['object detection', 'android']
+    releaseVersionCode = 1
+    releaseVersionName = '1.0.0'
+
+    androidBuildToolsVersion = '23.0.0'
+    androidSupportSdkVersion = '23.0.0'
+}
