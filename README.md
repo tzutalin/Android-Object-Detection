@@ -1,15 +1,14 @@
-# Android-Caffe-Demo
+# Android-Object-Detection
+[![Build Status](https://travis-ci.org/tzutalin/Android-Object-Detection.png)](https://travis-ci.org/tzutalin/Android-Object-Detection)
 
 ## Requirements
 * Android 4.0+ support
 
-* ARMv7 and x86_64 based devices
+* ARMv7 and x86 based devices
 
-* Get the Caffe model and push it to Phone SDCard
+* Get the Caffe model and push it to Phone SDCard. For object detection, network(*.prototxt) should use ROILayer, you can refer to [Fast-RCNN](https://github.com/rbgirshick/fast-rcnn). For scene recognition(object recognition), it can use any caffe network and weight with memory input layer.
 
-    `$ ./setup.sh`
-
-* Build with Gradle. You can use Android studio to build or $ ./gradlew
+* Build with Gradle. You can use Android studio to build
 
 ## Feature
 * [Object detection - Region-based Convolutional Networks detection](http://arxiv.org/abs/1504.08083)
@@ -32,9 +31,15 @@
 
 ## Usage 
 
-* There should be model and weight in /sdcard/fastrcnn and /sdcard/vision_scene after $ ./setup.sh
+* Download and push the neccessary file to your phone. There should be model and weight in /sdcard/fastrcnn and /sdcard/vision_scene.
 
-* Build and run the application
+` $ ./setup.sh `
+
+* Build and run the application using  gradlew or you can open AndroidStudio to import this project
+
+` $ ./gradlew assembleDebug`
+
+` $ adb install -r ./app/build/outputs/apk`
 
 Besides, you can change deep learning's model, weight, etc in VisionClassifierCreator.java
 ``` java
@@ -52,12 +57,12 @@ public class VisionClassifierCreator {
  }
 ``` 
 
-## Todo
+## TODO
 Speed up object detection
 
 ## License
 
-	    Copyright (C) 2015 TzuTaLin
+	    Copyright (C) 2015-2016 TzuTaLin
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
