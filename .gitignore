@@ -7,3 +7,6 @@
 /captures
 *.swp
 phone_data
+/projectFilesBackup/
+*.iml
+.gradle
