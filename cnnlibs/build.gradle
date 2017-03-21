@@ -5,8 +5,8 @@ android {
     buildToolsVersion "${rootProject.ext.androidBuildToolsVersion}"
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.androidCompileSdkVersion
         versionCode 1
         versionName "1.0"
     }
